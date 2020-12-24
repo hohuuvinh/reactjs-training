@@ -1,23 +1,12 @@
 import * as Types from './../actions/ActionTypes';
 import callapi from './../callapi/callapi';
 
-
-
-export function addProduct(product){
-    return{
-        type: Types.ADD_PRODUCT,
-        payload: product,
-    }
-}
-
-
 export const getProducts = () => {  
     return (dispatch) => {
         return callapi('products', 'GET', null).then(res => {
             dispatch(getProductsOk(res.data))
         })
     }
-    
 }
 export const getProductsOk = (products) => {
     return {
@@ -26,31 +15,42 @@ export const getProductsOk = (products) => {
     }
 
 }
+export function addProduct(product){
+    return (dispatch) => {
+        return callapi('products', 'POST', product).then(res => {
+            console.log(res.data);
+            dispatch(getProducts()); 
+        })
+    }
+}
+export function editProduct(productId){
+    return (dispatch) => {
+        return callapi(`products/${productId}`, 'GET', null).then(res => {
+            dispatch(editProductRD(res.data))
+        })
+        
+    }
+}
 
-// export const getProducts = () => {
-//     return {
-//         type: Types.GET_PRODUCTS
-//     }
-// }
+export function editProductRD(product){
+    return{
+        type: Types.EDIT_PRODUCT,
+        payload: product,
+    }
+}
 
-// export const getProductsOk = (items) => {
-//     return {
-//         type: Types.GET_PRODUCTS,
-//         items
-//     }
+export function PostEditProduct(product){
+    return (dispatch) => {
+        return callapi(`products/${product.id}`, 'PUT', product).then(res => {
+            dispatch(getProducts())
+        })     
+    }
+}
 
-// }
-
-// export function deleteTodo(productId){
-//     return{
-//         type: Types.DELETE_PRODUCT,
-//         payload:productId,
-//     }
-// }
-
-// export function updateTodo(product){
-//     return{
-//         type: Types.UPDATE_PRODUCT,
-//         payload: product,
-//     }
-// }
+export function DeleteProduct(productId){
+    return (dispatch) => {
+        return callapi(`products/${productId}`, 'DELETE', null).then(res => {
+            dispatch(getProducts())
+        })     
+    }
+}
