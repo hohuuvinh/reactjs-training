@@ -13,12 +13,12 @@ function Products() {
     }, []);
 
     return (
-
-        <div className="mt-5" style={{width:"50%",margin:"auto"}}>
+        <div className="mt-3" style={{width:"90%",margin:"auto"}}>
             <NavLink exact to="/add">
                 <div className="btn btn-primary mb-2 text-white">Add Product</div>
             </NavLink>
-            <table class="table table-striped" style={{width:"100%"}}>
+            <table className="table table-striped" style={{width:"100%"}}>
+            <tbody>
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
@@ -28,6 +28,7 @@ function Products() {
                 {products.map(product => {
                     return <Product_Item key={product.id} products={product} />
                 })}
+               </tbody>
             </table>
 
         </div>

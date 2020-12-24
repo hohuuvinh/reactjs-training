@@ -18,7 +18,6 @@ export const getProductsOk = (products) => {
 export function addProduct(product){
     return (dispatch) => {
         return callapi('products', 'POST', product).then(res => {
-            console.log(res.data);
             dispatch(getProducts()); 
         })
     }

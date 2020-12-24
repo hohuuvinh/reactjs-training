@@ -15,14 +15,12 @@ function EditProduct() {
     const productEdit = useSelector(state => state.EditProductRD);
     useEffect(() => {
         dispatch(editProduct(id));
-        console.log("ok");
         setData(productEdit)
     }, [productEdit.name]);
 
     function GetValueInputForm(e){
         const inputData={...data}
         inputData[e.target.id]=e.target.value
-        console.log(inputData)
         if(inputData.status == "false"){
             inputData.status = false
         }else{
@@ -36,15 +34,15 @@ function EditProduct() {
                 <p className="mt-5 font-weight-bold mb-1">Add Product</p>
                 <form style={{ width: "100%" }}>
                     <label className="mt-3">Name</label>
-                    <input className="form-control" id="name" value={data.name}
+                    <input className="form-control" id="name" value={data.name || "" }
                     onChange={(e)=>GetValueInputForm(e)}></input>
                     <label className="mt-3">Price</label>
-                    <input className="form-control" id="price" value={data.price}
+                    <input className="form-control" id="price" value={data.price || "" }
                     onChange={(e)=>GetValueInputForm(e)}></input>
                     <label className="mt-3">Status</label>
-                    <select className="form-control" id="status" value={data.status}
+                    <select className="form-control" id="status" value={data.status || "" }
                     onChange={(e)=>GetValueInputForm(e)}>
-                        <option selected value="true">true</option>
+                        <option defaultValue={data.status} value="true">true</option>
                         <option value="false">false</option>
                     </select>
                     <NavLink exact to="/">
