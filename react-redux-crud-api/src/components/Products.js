@@ -7,11 +7,9 @@ import { NavLink } from "react-router-dom";
 function Products() {
     let dispatch = useDispatch();
     const products = useSelector(state => state.ProductRD);
-
     useEffect(() => {
         dispatch(getProducts());
     }, []);
-
     return (
         <div className="mt-3" style={{width:"90%",margin:"auto"}}>
             <NavLink exact to="/add">
@@ -30,7 +28,6 @@ function Products() {
                 })}
                </tbody>
             </table>
-
         </div>
     );
 }
