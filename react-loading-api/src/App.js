@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import './App.css';
 import Loading from './Loading';
 import ListItem from './ListItem';
@@ -8,21 +10,12 @@ function App() {
   const [studentList, setStudentList] = useState([]);
   const [loading,setLoading] = useState(false);
   useEffect(() => {
-    async function fetchStudentList() {
-      try {
-        const requesUrl = 'https://5f7146ed64a3720016e603e1.mockapi.io/api/student';
-        const reponse = await fetch(requesUrl);
-        const reponseJSON = await reponse.json();
-        setStudentList(reponseJSON);
+    axios.get(`https://5f7146ed64a3720016e603e1.mockapi.io/api/student`)
+      .then(res => {
+        setStudentList(res.data);
         setLoading(true);
-        console.log(reponseJSON);
-      } catch {
-
-      }
-    }
-    fetchStudentList();
+      })
   }, []);
-  var ok = '<div>ffjjf</div>';
   return (
     <div>
     {loading ? studentList.map(studentList => {
