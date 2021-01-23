@@ -26,7 +26,7 @@ function EditProduct() {
         }else{
             inputData.status = true
         }     
-        setData(inputData)     
+        setData(inputData)   
     }
     return (
         <div style={{ width: "50%", margin: "auto" }}>
@@ -40,9 +40,9 @@ function EditProduct() {
                     <input className="form-control" id="price" value={data.price || "" }
                     onChange={(e)=>GetValueInputForm(e)}></input>
                     <label className="mt-3">Status</label>
-                    <select className="form-control" id="status" value={data.status || "" }
+                    <select className="form-control" id="status" value={data.status }
                     onChange={(e)=>GetValueInputForm(e)}>
-                        <option defaultValue={data.status} value="true">true</option>
+                        <option defaultValue={data.status}>true</option>
                         <option value="false">false</option>
                     </select>
                     <NavLink exact to="/">
