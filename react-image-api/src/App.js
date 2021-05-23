@@ -4,7 +4,6 @@ import axios from 'axios';
 function App() {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-
   const handleImageChange = (e) => {
     setSelectedFiles([]);
     if (e.target.files) {
@@ -17,7 +16,6 @@ function App() {
   };
 
   const renderPhotos = (source) => {
-    // console.log('source: ', source);
     return source.map((photo) => {
       return <img className="p-2" src={photo} alt="" key={photo} style={{ width: "20%", height: "180px" }} />;
     });

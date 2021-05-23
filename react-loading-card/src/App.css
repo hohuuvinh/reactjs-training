@@ -1,0 +1,29 @@
+.box-slide {
+  width:100%;
+  background: white;
+  text-align:left;
+  white-space: nowrap;
+  overflow-y:hidden;
+}
+.div_to_hold_images {
+  width:210px;
+  height:340px;
+  display: inline-block;
+  overflow:hidden;
+  margin-right: 3px;
+
+}
+.box-slide-title{
+  width: 100%;
+  height: 60px;
+  background: rgb(0,0,0);
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
