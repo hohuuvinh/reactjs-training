@@ -1,4 +1,3 @@
-import TextField from "@material-ui/core/TextField"
 import React, { useEffect, useRef, useState } from "react"
 import io from "socket.io-client"
 import "./App.css"
@@ -8,7 +7,6 @@ function App() {
   const [nameSubmit, setNameSubmit] = useState(false)
   const [nameUser, setNameUser]=useState("")
   const [ chat, setChat ] = useState([])
-
   const socketRef = useRef()
   useEffect(
 		() => {
@@ -20,14 +18,12 @@ function App() {
 		},
 		[ chat ]
 	)
-
   const onNameChange = (e) =>{
     setNameUser(e.target.value)
   }
   const nameSubmitForm =()=>{
     setNameSubmit(true)
   }
-
   const onContentChange =(e) =>{
     const getNameUser =nameUser;
     console.log(e.target.value)
@@ -35,7 +31,6 @@ function App() {
     setState({ ...state, name: getNameUser , message: e.target.value })
     console.log(state)
   }
-
   const onMessageSubmit = (e) => {
 		const { name, message } = state
 		socketRef.current.emit("message", { name, message })
@@ -43,7 +38,6 @@ function App() {
 		setState({ message: "", name })
     console.log(state)
 	}
-
 	const renderChat = () => {
 		return chat.map(({ name, message }, index) => (
        nameUser == name ? (
@@ -64,11 +58,6 @@ function App() {
 			
 		))
 	}
-
-
-
-  
-
   return (
     nameSubmit ? (
       <div className="box-main">
@@ -77,9 +66,6 @@ function App() {
     </div>
     <div className="p-2 box-content">
     {renderChat()}
-      
-      
-      
     </div>
     <form onSubmit={onMessageSubmit}>
     <div className="pl-2 pt-2 box-bottom">
@@ -95,7 +81,6 @@ function App() {
           <i className="fa fa-paper-plane text-white button-icon" aria-hidden="true" />
         </button>
       </div>
-      
     </div>
     </form>
   </div>
@@ -107,5 +92,4 @@ function App() {
     )
   )
 }
-
 export default App
