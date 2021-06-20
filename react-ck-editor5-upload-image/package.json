@@ -1,0 +1,25 @@
+{
+  "name": "ckeditor-tutorial1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": " cd Client && npm start",
+    "dev": "concurrently -n watch-js -c 'blue,green'  \"nodemon server.js\" \" npm run client\""
+  },
+  "author": "Flits",
+  "license": "ISC",
+  "dependencies": {
+    "@ckeditor/ckeditor5-essentials": "^20.0.0",
+    "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.4",
+    "fs": "0.0.1-security",
+    "nodemon": "^2.0.4"
+  }
+}
