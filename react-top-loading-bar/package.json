@@ -13,6 +13,7 @@
     "react-top-loading-bar": "^2.0.1",
     "web-vitals": "^1.0.1"
   },
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
