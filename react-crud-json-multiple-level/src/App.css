@@ -1,0 +1,14 @@
+
+p{
+  margin-bottom: 0 !important;
+  margin-top: 0;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+ 
+}

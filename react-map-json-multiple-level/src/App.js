@@ -80,7 +80,8 @@ function App() {
               }
             },
             {
-              name: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ce415b10-a56c-4cc8-b8f7-47fa2283ba50/jordan-ma2-shoe-qw1Z6m.png",
+              name: "shoes",
+              image:"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ce415b10-a56c-4cc8-b8f7-47fa2283ba50/jordan-ma2-shoe-qw1Z6m.png",
               price: 20,
               priceDiscount: 18,
               quanlity: 3,
@@ -138,11 +139,12 @@ function App() {
                 <td>
                   {story.item.map((item) =>
                     <ul>
+                      <img src={item.image} width="50px" height="50px"></img>
                       <p>Name item: {item.name}</p>
                       <p>Price: {item.price}$</p>
                       <p>PriceDiscount: {item.priceDiscount}$</p>
                       <p>Type</p>
-                      <div style={{ paddingLeft: '10px' }}>
+                      <div style={{ paddingLeft: '20px' }}>
                         {
                           Object.entries(item.type).map(([k, v]) => (
                             <div key={k} >
@@ -151,7 +153,9 @@ function App() {
                           ))
                         }
                       </div>
+                      <hr></hr>
                     </ul>
+                    
                   )}
                 </td>
               </tr>
