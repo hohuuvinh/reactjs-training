@@ -4,24 +4,59 @@ import "./App.css";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [quanlity, setQuanlity] = useState(false)
   function getcart() {
     var cartArr = [];
-    firebase.firestore().collection("cart-order").onSnapshot((querySnapshot) => {   
+    firebase.firestore().collection("cart-order").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        cartArr.push({ id: doc.id, ...doc.data() })    
+        cartArr.push({ id: doc.id, ...doc.data() })
       });
       setCart(cartArr)
     })
+    console.log(cartArr)
   }
-  console.log(cart) 
+
+  console.log(cart)
   useEffect(() => {
     getcart();
-  }, [])
+  }, [quanlity])
 
+  const UpQuanlity = (iditem, idstore) => {
+    cart.forEach((cart) => {
+      if (cart.id == idstore) {
+        console.log(cart)
+        cart.item.forEach((item) => {
+          if (item.id == iditem) {
+            item.quanlity++
+          }
+        })
 
+        firebase.firestore().collection("cart-order").doc(cart.id).update(
+        cart
+      )
+      
+      setQuanlity(!quanlity)
+      }
+      
+    })
+    
+  }
+  console.log(quanlity)
   return (
     <div className="App">
-      
+      {cart.map((cart) =>
+        <>
+          <p>{cart.name}</p>
+          {cart.item.map((item) =>
+            <ul>
+              <p>{item.name}</p>
+              <p>{item.quanlity}</p>
+              <p onClick={() => UpQuanlity(item.id, cart.id)}>cong</p>
+            </ul>
+          )}
+        </>
+      )}
+
     </div>
   );
 }
